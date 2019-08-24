@@ -34,22 +34,10 @@
       "metadata": {
         "description": "Describes plan's instance count"
       }
-    },
-    "demoaccountType": {
-      "type": "string",
-      "defaultValue": "Standard_LRS",
-      "allowedValues": [
-        "Standard_LRS",
-        "Standard_ZRS",
-        "Standard_GRS",
-        "Standard_RAGRS",
-        "Premium_LRS"
-      ]
     }
   },
   "variables": {
-    "webSiteName": "[concat('webSite', uniqueString(resourceGroup().id))]",
-    "demoaccountName": "[concat('demoaccount', uniqueString(resourceGroup().id))]"
+    "webSiteName": "[concat('webSite', uniqueString(resourceGroup().id))]"
   },
   "resources": [
     {
@@ -65,8 +53,7 @@
         "capacity": "[parameters('skuCapacity')]"
       },
       "properties": {
-        "name": "[parameters('hostingPlanName')]",
-        "numberOfWorkers": 1
+        "name": "[parameters('hostingPlanName')]"
       }
     },
     {
@@ -303,18 +290,6 @@
       "properties": {
         "applicationId": "[variables('webSiteName')]"
       }
-    },
-    {
-      "name": "[variables('demoaccountName')]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "location": "[resourceGroup().location]",
-      "apiVersion": "2016-01-01",
-      "sku": "[parameters('demoaccountType')]",
-      "dependsOn": [],
-      "tags": {
-        "displayName": "demoaccount"
-      },
-      "kind": "Storage"
     }
   ]
 }
