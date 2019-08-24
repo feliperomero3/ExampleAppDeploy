@@ -4,6 +4,12 @@
   "parameters": {
     "hostingPlanName": {
       "value": "demoHostPlan"
+    },
+    "ExampleAppPackageFolder": {
+      "value": "ExampleApp"
+    },
+    "ExampleAppPackageFileName": {
+      "value": "package.zip"
     }
   }
 }
